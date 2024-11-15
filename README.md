@@ -1,0 +1,2 @@
+- 👋 Hey,uh have a goodtime
+loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/BloxFruits/main/redz9999"))()
