@@ -1,0 +1,27 @@
+-- 假设这个函数用于踢出玩家
+function kickPlayer(player)
+    -- 这里应该是踢出玩家的代码
+    -- 在 Roblox 中，可以使用 game.Players:Kick 方法来踢出玩家
+    game.Players:Kick(player)
+end
+
+-- 连接玩家的 Jump 事件
+local function onPlayerJumping(player)
+    if player.Character and player.Character:FindFirstChild("Humanoid") then
+        local humanoid = player.Character:WaitForChild("Humanoid")
+        humanoid.Jumping:Connect(function()
+            print(player.Name .. " 正在跳跃，即将被踢出...")
+            kickPlayer(player)
+        end)
+    end
+end
+
+-- 遍历所有玩家并连接 Jump 事件
+for _, player in ipairs(game.Players:GetPlayers()) do
+    onPlayerJumping(player)
+end
+
+-- 监听新玩家加入
+game.Players.PlayerAdded:Connect(function(player)
+    onPlayerJumping(player)
+end)
