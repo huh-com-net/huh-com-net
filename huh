@@ -1,0 +1,9 @@
+local Players = game:GetService("Players")
+
+Players.PlayerAdded:Connect(function(player)
+    -- 等待一小段时间，以确保玩家已经完全进入游戏
+    wait(5)
+    
+    -- 将玩家传送回游戏大厅
+    player:Kick("自动退出游戏")
+end)
